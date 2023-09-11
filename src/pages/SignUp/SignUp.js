@@ -1,5 +1,5 @@
-import React from "react";
-import "./SignUp.scss";
+import React from 'react';
+import './SignUp.scss';
 
 const SignUp = () => {
   return <div className="signUp">회원가입페이지</div>;
