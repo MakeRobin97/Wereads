@@ -1,0 +1,15 @@
+@charset "utf-8";
+@import "./reset", "../partials/mixin", "../partials/theme", "../layout/layout";
+
+* {
+    box-sizing: border-box;
+}
+
+// 웹 접근성 처리
+.a11y-hidden {
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+}

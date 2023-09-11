@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+$blue: #2d71f7;
+$navy: #083e7f;
+$red: #ff3636;
+
+$pallette: (
+    (lightTheme, #000, #999, #ccc, #e0e0e0, #fafafa, #fff),
+    (darkTheme, #fff, #fafafa, #e0e0e0, #ccc, #999, #000)
+);
+
+@mixin ThemeTransition {
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}

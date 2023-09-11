@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+@mixin Position(
+    $position,
+    $top: null,
+    $right: null,
+    $bottom: null,
+    $left: null
+) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin FlexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
