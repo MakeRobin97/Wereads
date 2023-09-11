@@ -23,7 +23,15 @@ const LogIn = () => {
         <form className="form">
           <fieldset>
             <legend className="hidden">로그인 양식</legend>
-            <Button type="submit" shape="solid" scale="large" text="로그인" />
+            <Button
+              type="submit"
+              shape="solid"
+              scale="large"
+              text="로그인"
+              disabled
+            />
+            <Button type="button" shape="outline" scale="small" text="글쓰기" />
+            <Button type="button" shape="icon" icon="like" />
           </fieldset>
         </form>
       </section>
