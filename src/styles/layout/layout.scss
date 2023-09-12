@@ -2,15 +2,17 @@
 
 #root,
 .inner-wrap {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .inner-wrap {
-    display: flex;
-    min-width: 320px;
-    max-width: 576px;
-    margin: 0 auto;
-    border: 1px #eee solid;
-    border-radius: 10px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 320px;
+  max-width: 576px;
+  margin: 0 auto;
+  border: 1px #eee solid;
+  border-radius: 10px;
+  overflow: hidden;
 }
