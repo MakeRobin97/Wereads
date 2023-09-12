@@ -47,10 +47,7 @@
       }
     }
 
-    .error,
-    .idError,
-    .idExist,
-    .passwordError {
+    .red {
       color: $red;
       input {
         border: 3px solid $red;
@@ -66,7 +63,7 @@
       }
     }
 
-    .done {
+    .blue {
       color: $blue;
       input {
         border: 3px solid $blue;

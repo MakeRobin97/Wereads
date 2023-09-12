@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import './SignUpClear.scss';
@@ -47,7 +47,7 @@ const SignUpClear = () => {
             text="확인"
             onClass="checkBtn"
             onFunction={navigateLogIn}
-          ></Button>
+          />
         </div>
       </section>
     </div>

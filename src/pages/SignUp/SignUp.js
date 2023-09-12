@@ -6,9 +6,7 @@ import InfoBox from '../../components/InfoBox/InfoBox';
 import './SignUp.scss';
 
 const SignUp = () => {
-  let dataResponse = { errorCode: '' };
-  let dataStatus = 'normal';
-
+  const [signUpResult, setSignUpResult] = useState({ errorCode: 'normal' });
   const [pwAgain, setPwAgain] = useState('');
 
   const navigate = useNavigate();
@@ -68,13 +66,9 @@ const SignUp = () => {
     })
       .then(res => res.json())
       .then(result => {
-        dataResponse = result;
+        setSignUpResult(result);
       });
   };
-
-  if (dataResponse.errorCode === 'idExist') {
-    dataStatus = 'idError';
-  }
 
   return (
     <div className="signUp">
@@ -95,7 +89,7 @@ const SignUp = () => {
               name="email"
               type="text"
               onInputChange={onInputChange}
-              status={dataStatus}
+              status={signUpResult.errorCode}
             />
             <Input
               placeholder="비밀번호"
@@ -103,7 +97,6 @@ const SignUp = () => {
               type="password"
               onInputChange={onInputChange}
               disabled={false}
-              status={dataStatus}
             />
             <Input
               placeholder="비밀번호 확인"
@@ -111,7 +104,6 @@ const SignUp = () => {
               type="password"
               disabled={false}
               onInputChange={passwordAgain}
-              status={dataStatus}
             />
             <InfoBox title="닉네임" required={false} />
             <Input
@@ -119,7 +111,6 @@ const SignUp = () => {
               name="nickname"
               type="text"
               onInputChange={onInputChange}
-              status={dataStatus}
             />
 
             <Button

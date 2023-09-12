@@ -5,9 +5,7 @@ import Input from '../../components/Input/Input';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import { useNavigate } from 'react-router-dom';
 const LogIn = () => {
-  let dataResponse = { errorCode: '' };
-  let dataStatus = 'normal';
-
+  const [logInResult, setLoginResult] = useState({ errorCode: 'normal' });
   const navigate = useNavigate();
   const navigateSignUp = () => {
     navigate('/signup ');
@@ -53,17 +51,9 @@ const LogIn = () => {
     })
       .then(res => res.json())
       .then(result => {
-        dataResponse = result;
+        setLoginResult(result);
       });
   };
-
-  if (dataResponse.errorCode === 'idError') {
-    dataStatus = 'idError';
-  } else if (dataResponse.errorCode === 'idExist') {
-    dataStatus = 'idExist';
-  } else if (dataResponse.errorCode === 'passwordError') {
-    dataStatus = 'passwordError';
-  }
 
   return (
     <div className="logIn">
@@ -84,20 +74,20 @@ const LogIn = () => {
         <form className="form">
           <fieldset>
             <legend className="hidden">로그인 양식</legend>
-            <InfoBox required={true} title={'이메일'}></InfoBox>
+            <InfoBox required={true} title="이메일" />
             <Input
               placeholder="이메일"
               name="email"
               type="text"
               onInputChange={onInputChange}
-              status={dataStatus}
+              status={logInResult.errorCode}
             />
             <Input
               placeholder="비밀번호"
               name="password"
               type="password"
               onInputChange={onInputChange}
-              status={dataStatus}
+              status={logInResult.errorCode}
             />
             <Button
               type="button"
