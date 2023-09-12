@@ -15,10 +15,11 @@ function Button(props) {
 
   // props
   // - type: [String]
-  // - shape: [String] solid / outline / icon / mix
+  // - shape: [String] solid / outline / icon / mix / text
   // - icon: [String] like
   // - scale: [String] small / large
   // - text: [String]
+  // - action: [String] delete
   // - disabled: 조건이 상이하므로 페이지마다 다른 삼항 조건문 적용
 
   return (

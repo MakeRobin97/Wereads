@@ -1,0 +1,113 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/theme';
+
+@mixin theme(
+  $theme,
+  $grayscale-1,
+  $grayscale-2,
+  $grayscale-3,
+  $grayscale-4,
+  $grayscale-5,
+  $grayscale-6
+) {
+  [theme='#{$theme}'] {
+    @include ThemeTransition;
+    background-color: $grayscale-6;
+    .post-list {
+      padding: 16px 24px 0;
+      .post-item {
+        & + .post-item {
+          border-top: 1px $grayscale-7 solid;
+        }
+        padding: 24px 0;
+        & > div {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+        }
+        .profile-area {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .left-split {
+            display: inherit;
+            align-items: inherit;
+            flex: 1;
+            min-width: 0;
+          }
+          .right-split {
+            .date-area {
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              font-size: 0;
+              .date {
+                font-size: 16px;
+                line-height: 22px;
+                color: $grayscale-2;
+              }
+              button:last-child {
+                color: $grayscale-1;
+              }
+            }
+          }
+
+          img {
+            width: 46px;
+            height: 46px;
+            border: 1px $grayscale-4 solid;
+            border-radius: 50%;
+            overflow: hidden;
+            & + span {
+              margin-left: 16px;
+            }
+          }
+          .nickname {
+            @include Ellipsis($line: 1);
+            flex: 1;
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 700;
+            color: $grayscale-1;
+          }
+        }
+        .post-content {
+          @include Ellipsis($multi: true, $line: 4);
+          margin: 16px 0;
+          font-size: 20px;
+          line-height: 28px;
+          color: $grayscale-1;
+        }
+        .count-area {
+          span {
+            display: inline-block;
+            padding: 0 4px;
+            font-size: 16px;
+            line-height: 22px;
+            color: $grayscale-2;
+            & + span {
+              margin-left: 4px;
+            }
+          }
+          & + button {
+            margin-top: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4,
+  $grayscale-5, $grayscale-6 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4,
+    $grayscale-5,
+    $grayscale-6
+  );
+}
