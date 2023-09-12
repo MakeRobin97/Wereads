@@ -21,7 +21,7 @@ function Button(props) {
 
   // props
   // - type: [String]
-  // - shape: [String] solid / outline / icon
+  // - shape: [String] solid / outline / icon / mix
   // - icon: [String] like
   // - scale: [String] small / large
   // - text: [String]

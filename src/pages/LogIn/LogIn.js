@@ -32,6 +32,7 @@ const LogIn = () => {
             />
             <Button type="button" shape="outline" scale="small" text="글쓰기" />
             <Button type="button" shape="icon" icon="like" />
+            <Button type="button" shape="mix" text="뒤로" />
           </fieldset>
         </form>
       </section>
