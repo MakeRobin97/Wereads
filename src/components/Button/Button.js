@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Button.scss';
 
 function Button(props) {
-  const { type = 'button', shape, icon, scale, text, disabled } = props;
-  const [toggle, setToggle] = useState('false');
-  const [toggleText, setToggleText] = useState('안 좋아요');
-  const clickedToggle = e => {
-    const targetAttr = e.target.attributes.icon;
-    const isIconShape = targetAttr ? true : false;
-
-    if (isIconShape) {
-      setToggle(prev => !prev);
-      if (!toggle) {
-        setToggleText('안 좋아요');
-      } else {
-        setToggleText('좋아요');
-      }
-    }
-  };
+  const {
+    type = 'button',
+    shape,
+    icon,
+    scale,
+    text,
+    disabled,
+    onFunction,
+    onClass,
+  } = props;
 
   // props
   // - type: [String]
@@ -29,17 +23,15 @@ function Button(props) {
 
   return (
     <button
-      className="btn"
+      className={`btn ${onClass}`}
       type={type}
       shape={shape}
       icon={icon}
       scale={scale}
-      aria-label={!icon ? text : toggleText}
-      toggle={!toggle ? 'true' : 'false'}
-      onClick={clickedToggle}
+      onClick={onFunction}
       disabled={disabled}
     >
-      {!icon ? text : toggleText}
+      {text}
     </button>
   );
 }

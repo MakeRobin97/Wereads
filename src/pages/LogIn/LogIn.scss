@@ -27,9 +27,41 @@
         }
       }
 
+      fieldset {
+        button {
+          margin-top: 20px;
+        }
+      }
+
       .container {
         flex: 1;
         padding: 24px 24px 40px;
+      }
+
+      .more {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0 0 10px;
+      }
+      .goToSignUp {
+        width: 140px;
+        height: 25px;
+        @include FlexCenter;
+        border-right: 2px solid $grayscale-4;
+        cursor: pointer;
+
+        button {
+          all: unset;
+        }
+      }
+      .findPassword {
+        width: 140px;
+        height: 25px;
+        @include FlexCenter;
+
+        button {
+          all: unset;
+        }
       }
     }
   }

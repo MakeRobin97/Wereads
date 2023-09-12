@@ -2,7 +2,7 @@ import React from 'react';
 import LogIn from './pages/LogIn/LogIn';
 import SignUp from './pages/SignUp/SignUp';
 import Main from './pages/Main/Main';
-
+import SignUpClear from './pages/SignUpClear/SignUpClear';
 import Button from './components/Button/Button';
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
@@ -41,6 +41,7 @@ const Router = () => {
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/button" element={<Button />} />
+            <Route path="/signupclear" element={<SignUpClear />} />
           </Routes>
         </BrowserRouter>
       </div>
