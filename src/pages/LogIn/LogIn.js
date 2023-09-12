@@ -30,9 +30,9 @@ const LogIn = () => {
               text="로그인"
               disabled
             />
-            <Button type="button" shape="outline" scale="small" text="글쓰기" />
-            <Button type="button" shape="icon" icon="like" />
-            <Button type="button" shape="mix" text="뒤로" />
+            <Button shape="outline" scale="small" text="글쓰기" />
+            <Button shape="icon" icon="like" />
+            <Button shape="mix" text="뒤로" />
           </fieldset>
         </form>
       </section>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Button.scss';
 
 function Button(props) {
-  const { type, shape, icon, scale, text, disabled } = props;
+  const { type = 'button', shape, icon, scale, text, disabled } = props;
   const [toggle, setToggle] = useState('false');
   const [toggleText, setToggleText] = useState('안 좋아요');
   const clickedToggle = e => {
