@@ -3,6 +3,8 @@ import LogIn from './pages/LogIn/LogIn';
 import SignUp from './pages/SignUp/SignUp';
 import Main from './pages/Main/Main';
 
+import Button from './components/Button/Button';
+
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 const Router = () => {
@@ -38,6 +40,7 @@ const Router = () => {
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/button" element={<Button />} />
           </Routes>
         </BrowserRouter>
       </div>

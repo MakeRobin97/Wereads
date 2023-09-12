@@ -13,12 +13,18 @@
   [theme='#{$theme}'] {
     @include ThemeTransition;
     background-color: $grayscale-6;
-    .login {
+    .logIn {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       .splash {
         @include FlexCenter;
         width: inherit;
+        height: inherit;
+        h1 {
+          text-align: center;
+        }
       }
 
       .container {

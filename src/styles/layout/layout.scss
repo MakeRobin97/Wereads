@@ -7,11 +7,12 @@
 
 .inner-wrap {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   min-width: 320px;
   max-width: 576px;
   margin: 0 auto;
   border: 1px #eee solid;
   border-radius: 10px;
   overflow: hidden;
-  //   background-color: pink;
 }

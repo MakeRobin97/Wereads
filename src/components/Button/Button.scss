@@ -1,0 +1,87 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin.scss', '../../styles/partials/theme.scss';
+
+.btn {
+  @include FlexCenter;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border: 1px transparent solid;
+  border-radius: 6px;
+  background-color: $grayscale-6;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 800;
+  cursor: pointer;
+
+  &[scale='small'] {
+    min-width: 120px;
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+
+  &[scale='large'] {
+    width: 100%;
+  }
+
+  &[shape='mix'] {
+    min-width: initial;
+    flex-direction: row;
+    padding: 0;
+    border: 0;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    color: $grayscale-1;
+    &::before {
+      content: '';
+      width: 40px;
+      height: 40px;
+      margin-right: 4px;
+      background: url(../../../public/images/Back_arrow.svg) no-repeat
+        center/cover;
+    }
+  }
+
+  &[shape='icon'] {
+    @include Ir();
+    min-width: initial;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: url(../../../public/images/heart.svg) no-repeat center/cover;
+    &[toggle='true'] {
+      background-image: url(../../../public/images/heart_filled.svg);
+    }
+  }
+
+  &[shape='solid'] {
+    border-color: $blue;
+    background-color: $blue;
+    color: $grayscale-6;
+    &:active {
+      border-color: $navy;
+      background-color: $navy;
+    }
+    &[disabled] {
+      background-color: $grayscale-3;
+    }
+  }
+
+  &[shape='outline'] {
+    border-color: $blue;
+    background-color: $grayscale-6;
+    color: $blue;
+    &:active {
+      border-color: $navy;
+      color: $navy;
+    }
+    &[disabled] {
+      color: $grayscale-3;
+    }
+  }
+
+  &[disabled] {
+    border-color: $grayscale-3;
+    cursor: not-allowed;
+  }
+}
