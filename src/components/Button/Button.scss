@@ -80,6 +80,21 @@
     }
   }
 
+  &[shape='text'] {
+    display: inline-flex;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  &[action='delete'] {
+    color: $red;
+  }
+
   &[disabled] {
     border-color: $grayscale-3;
     cursor: not-allowed;
