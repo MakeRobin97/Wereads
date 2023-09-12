@@ -17,11 +17,11 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       .splash {
         @include FlexCenter;
         width: inherit;
-        height: 100vh;
+        height: inherit;
         h1 {
           text-align: center;
         }
