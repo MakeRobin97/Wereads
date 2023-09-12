@@ -4,6 +4,7 @@ import './Input.scss';
 const Input = props => {
   let explain;
   let alert;
+  let required;
   if (props.status === 'error') {
     explain = '에러 코드';
     alert = true;
@@ -12,8 +13,20 @@ const Input = props => {
     alert = true;
   }
 
+  if (props.required === true) {
+    required = '필수 사항';
+  } else {
+    required = '선택 사항';
+  }
+
   return (
     <div className={`input ${props.status}`}>
+      {props.box ? (
+        <div className="infoBox">
+          <div className="infoFirst">{props.title}</div>
+          <div className="infoSecond">{required}</div>
+        </div>
+      ) : null}
       <input
         name={props.name}
         placeholder={props.placeholder}

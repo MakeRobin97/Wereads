@@ -70,9 +70,11 @@ const LogIn = () => {
         onInputChange={onInputChange}
         inputs={inputs}
         disabled={false}
-        required={false}
         dataCheck={false}
         status="normal"
+        box={true}
+        title="기본정보"
+        required="필수 사항"
       />
       <Input
         placeholder="비밀번호"
@@ -81,8 +83,10 @@ const LogIn = () => {
         onInputChange={onInputChange}
         inputs={inputs}
         disabled={false}
-        required={false}
         status="normal"
+        box={false}
+        title=""
+        required=""
       />
       <Input
         placeholder="이메일"
@@ -91,9 +95,11 @@ const LogIn = () => {
         onInputChange={onInputChange}
         inputs={inputs}
         disabled={true}
-        required={false}
         dataCheck={false}
         status="normal"
+        box={false}
+        title=""
+        required=""
       />
       <Input
         placeholder="비밀번호"
@@ -101,9 +107,11 @@ const LogIn = () => {
         name="password"
         onInputChange={onInputChange}
         disabled={false}
-        required={false}
         dataCheck={false}
         status="error"
+        box={false}
+        title=""
+        required=""
       />
       <Input
         placeholder="비밀번호"
@@ -111,9 +119,11 @@ const LogIn = () => {
         name="password"
         onInputChange={onInputChange}
         disabled={false}
-        required={false}
         dataCheck={false}
         status="done"
+        box={false}
+        title=""
+        required=""
       />
     </div>
   );
