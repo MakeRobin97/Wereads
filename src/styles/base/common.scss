@@ -8,7 +8,15 @@
 html,
 body {
   font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-  word-break: keep-all;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: initial;
+  text-decoration: none;
 }
 
 // 웹 접근성 처리

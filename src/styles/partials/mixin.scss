@@ -25,3 +25,20 @@
   color: transparent;
   font-size: 1px;
 }
+
+@mixin Ellipsis($multi: null, $line: null) {
+  @if $multi {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $line; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    white-space: normal;
+  } @else {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+  }
+}

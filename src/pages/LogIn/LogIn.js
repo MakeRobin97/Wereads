@@ -4,6 +4,7 @@ import './LogIn.scss';
 
 const LogIn = () => {
   const publicUrl = process.env.PUBLIC_URL;
+
   return (
     <div className="logIn">
       <section className="splash">
