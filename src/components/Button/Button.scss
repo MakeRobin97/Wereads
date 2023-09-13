@@ -69,3 +69,9 @@
     cursor: not-allowed;
   }
 }
+
+.btn-wrap {
+  display: flex;
+  justify-content: end;
+  padding: 0 24px;
+}
