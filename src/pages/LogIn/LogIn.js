@@ -5,7 +5,7 @@ import Input from '../../components/Input/Input';
 import { useNavigate } from 'react-router-dom';
 const LogIn = () => {
   const [logInResult, setLoginResult] = useState({
-    errorCode: 'normal',
+    code: 'normal',
   });
   const navigate = useNavigate();
   const navigateSignUp = () => {
@@ -56,7 +56,7 @@ const LogIn = () => {
       });
   };
 
-  if (logInResult.errorCode === 'logInSuccess') {
+  if (logInResult.code === 'logInSuccess') {
     navigate('/');
   }
 
@@ -84,14 +84,14 @@ const LogIn = () => {
               name="email"
               type="text"
               onInputChange={onInputChange}
-              status={logInResult.errorCode}
+              code={logInResult.code}
             />
             <Input
               placeholder="비밀번호"
               name="password"
               type="password"
               onInputChange={onInputChange}
-              status={logInResult.errorCode}
+              code={logInResult.code}
             />
             <Button
               type="button"
@@ -99,7 +99,7 @@ const LogIn = () => {
               scale="large"
               text="로그인"
               disabled={logInBtnCheck}
-              onClcik={navigateLogIn}
+              onClick={navigateLogIn}
             />
           </fieldset>
         </form>
