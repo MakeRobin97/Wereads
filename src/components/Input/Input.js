@@ -20,20 +20,6 @@ const Input = props => {
     explain = '비밀번호가 틀렸어요!';
   }
 
-  // if (status === 'idError') {
-  //   explain = '존재하지 않는 이메일입니다!';
-  //   alert = true;
-  // } else if (status === 'idExist') {
-  //   explain = '이미 가입되어 있는 아이디입니다!';
-  //   alert = true;
-  // } else if (status === 'passwordError') {
-  //   explain = '비밀번호가 틀렸어요!';
-  //   alert = true;
-  // } else if (status === 'done') {
-  //   explain = '완료 되었습니다.';
-  //   alert = true;
-  // }
-
   return (
     <label className={`input ${statusColor}`}>
       <input

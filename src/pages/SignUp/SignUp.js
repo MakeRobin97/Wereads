@@ -6,7 +6,9 @@ import InfoBox from '../../components/InfoBox/InfoBox';
 import './SignUp.scss';
 
 const SignUp = () => {
-  const [signUpResult, setSignUpResult] = useState({ errorCode: 'normal' });
+  const [signUpResult, setSignUpResult] = useState({
+    errorCode: 'normal',
+  });
   const [pwAgain, setPwAgain] = useState('');
 
   const navigate = useNavigate();

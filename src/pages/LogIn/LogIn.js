@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import Button from '../../components/Button/Button';
 import './LogIn.scss';
 import Input from '../../components/Input/Input';
-import InfoBox from '../../components/InfoBox/InfoBox';
 import { useNavigate } from 'react-router-dom';
 const LogIn = () => {
   const [logInResult, setLoginResult] = useState({
-    errorCode: 'passwordError',
+    errorCode: 'normal',
   });
   const navigate = useNavigate();
   const navigateSignUp = () => {
