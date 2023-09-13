@@ -4,16 +4,29 @@ import './PostList.scss';
 
 const Post = () => {
   const [dataList, setDataList] = useState([]);
+  const [date, setDate] = useState([]);
   const publicUrl = process.env.PUBLIC_URL;
   const defaultProfileImg = `${publicUrl}/images/user.png`;
 
   useEffect(() => {
-    fetch('/data/postData.json', {
+    fetch('http://10.58.52.108:8000/posts/read', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
-        setDataList(data);
+        const result = data.getThread;
+        let primaryData;
+        // let arr = [];
+
+        for (let i = 0; i < result.length; i++) {
+          const rawData = result[i].createdAt;
+          const stringData = rawData.toString();
+          primaryData = stringData.slice(2, 10);
+          // arr = arr.push(primaryData);
+        }
+
+        setDataList(result);
+        setDate(primaryData);
       });
   }, []);
 
@@ -27,16 +40,17 @@ const Post = () => {
                 <div className="left-split">
                   <img
                     src={
-                      item.profileImage === ''
+                      item.profileImage === null ||
+                      item.profileImage === 'undefined'
                         ? defaultProfileImg
                         : item.profileImage
                     }
-                    alt="류창선님 프로필 사진"
+                    alt={`${item.nickname} 프로필 사진`}
                   />
                   <span className="nickname">{item.nickname}</span>
                 </div>
                 <div className="right-split">
-                  <span className="date">{item.createdAt}</span>
+                  <span className="date">{date}</span>
                 </div>
               </div>
               <Link to="/postDetail">
