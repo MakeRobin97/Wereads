@@ -4,6 +4,7 @@ import SignUp from './pages/SignUp/SignUp';
 import Main from './pages/Main/Main';
 import SignUpClear from './pages/SignUpClear/SignUpClear';
 import Button from './components/Button/Button';
+import TextWrite from './pages/TextWrite/TextWrite';
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
@@ -42,6 +43,7 @@ const Router = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/button" element={<Button />} />
             <Route path="/signupclear" element={<SignUpClear />} />
+            <Route path="/textwrite" element={<TextWrite />} />
           </Routes>
         </BrowserRouter>
       </div>

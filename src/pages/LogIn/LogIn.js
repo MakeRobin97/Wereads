@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Button from '../../components/Button/Button';
 import './LogIn.scss';
 import Input from '../../components/Input/Input';
-import InfoBox from '../../components/InfoBox/InfoBox';
 import { useNavigate } from 'react-router-dom';
 const LogIn = () => {
-  const [logInResult, setLoginResult] = useState({ errorCode: 'normal' });
+  const [logInResult, setLoginResult] = useState({
+    errorCode: 'normal',
+  });
   const navigate = useNavigate();
   const navigateSignUp = () => {
     navigate('/signup ');
@@ -55,6 +56,10 @@ const LogIn = () => {
       });
   };
 
+  if (logInResult.errorCode === 'logInSuccess') {
+    navigate('/');
+  }
+
   return (
     <div className="logIn">
       <section className="splash">
@@ -74,7 +79,6 @@ const LogIn = () => {
         <form className="form">
           <fieldset>
             <legend className="hidden">로그인 양식</legend>
-            <InfoBox required={true} title="이메일" />
             <Input
               placeholder="이메일"
               name="email"
