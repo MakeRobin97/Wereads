@@ -27,7 +27,7 @@ button {
 
 #theme-switcher {
   @include Position(fixed, $top: 0, $right: 0);
-  z-index: 10;
+  z-index: 100;
   appearance: none;
   width: 40px;
   height: 40px;

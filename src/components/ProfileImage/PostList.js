@@ -40,7 +40,7 @@ const Post = () => {
                   <span className="nickname">{item.nickname}</span>
                 </div>
                 <div className="right-split">
-                  <span className="date">{item.createdAt}</span>
+                  <span className="date">{item.createAt}</span>
                 </div>
               </div>
               <Link to="/postDetail">

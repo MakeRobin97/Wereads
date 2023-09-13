@@ -19,13 +19,19 @@
       line-height: 28px;
       font-weight: 400;
       color: $grayscale-1;
-      &::before {
-        content: '';
-        width: 40px;
-        height: 40px;
-        margin-right: 4px;
-        background: url(../../../public/images/Back_arrow.svg) no-repeat
-          center/cover;
+      // &::before {
+      //   content: '';
+      //   width: 40px;
+      //   height: 40px;
+      //   margin-right: 4px;
+      //   background: url(../../../public/images/Back_arrow.svg) no-repeat
+      //     center/cover;
+      // }
+
+      svg {
+        path {
+          stroke: $grayscale-1;
+        }
       }
     }
   }
