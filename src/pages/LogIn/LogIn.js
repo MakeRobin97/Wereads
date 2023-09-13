@@ -40,7 +40,7 @@ const LogIn = () => {
 
   // 로그인 요청
   const navigateLogIn = () => {
-    fetch('http://localhost:8000/users', {
+    fetch('http://10.58.52.108:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -94,7 +94,7 @@ const LogIn = () => {
               code={logInResult.code}
             />
             <Button
-              type="button"
+              type="submit"
               shape="solid"
               scale="large"
               text="로그인"
