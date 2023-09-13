@@ -13,33 +13,36 @@
   [theme='#{$theme}'] {
     @include ThemeTransition;
     background-color: $grayscale-6;
-    .signUp {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-transition: background-color 9999s ease-out;
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+
+    .infoBox {
       display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100vh;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0 5px 0;
 
-      .backBtn {
-        margin: 15px 0 15px 0;
+      .infoFirst {
+        font-weight: 700;
+        font-size: 15px;
       }
 
-      .signUpBtn {
-        margin-top: 200px;
-        // position: absolute;
-        // bottom: 0;
+      .infoSecond {
+        font-size: 12px;
       }
 
-      fieldset {
-        h1 {
-          margin-bottom: 20px;
-          font-size: 25px;
-          font-weight: 700;
-        }
+      .red {
+        color: $red;
       }
 
-      .container {
-        flex: 1;
-        padding: 24px 24px 40px;
+      .grey {
+        color: $grayscale-3;
       }
     }
   }
