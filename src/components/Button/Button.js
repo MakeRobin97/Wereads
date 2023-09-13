@@ -4,32 +4,31 @@ import './Button.scss';
 function Button(props) {
   const {
     type = 'button',
-    shape,
-    icon,
+    shape = 'solid',
     scale,
     text,
+    action,
     disabled,
-    onFunction,
-    onClass,
+    onClick,
   } = props;
 
   // props
-  // - type: [String]
-  // - shape: [String] solid / outline / icon / mix / text
-  // - icon: [String] like
-  // - scale: [String] small / large
+  // - type: [String] button(default) / submit / reset
+  // - shape: [String] solid(default) / outline / text
+  // - scale: [String] large(default) / small
   // - text: [String]
   // - action: [String] delete
   // - disabled: 조건이 상이하므로 페이지마다 다른 삼항 조건문 적용
 
   return (
     <button
-      className={`btn ${onClass}`}
+      className="btn"
       type={type}
       shape={shape}
-      icon={icon}
       scale={scale}
-      onClick={onFunction}
+      aria-label={text}
+      action={action}
+      onClick={onClick}
       disabled={disabled}
     >
       {text}
