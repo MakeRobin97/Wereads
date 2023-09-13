@@ -1,13 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
+import Header from '../../components/Header/Header';
 import './SignUpClear.scss';
 
 const SignUpClear = () => {
   const navigate = useNavigate();
-  const navigateBack = () => {
-    navigate(-1);
-  };
 
   const navigateLogIn = () => {
     navigate('/login ');
@@ -17,15 +15,7 @@ const SignUpClear = () => {
 
   return (
     <div className="signUpClear">
-      <section className="container">
-        <Button
-          shape="mix"
-          text="뒤로"
-          clickedToggle={navigateBack}
-          onFunction={navigateBack}
-          onClass="backBtn"
-        />
-      </section>
+      <Header />
       <section className="splash">
         <hgroup>
           <h1>
@@ -45,8 +35,7 @@ const SignUpClear = () => {
             shape="solid"
             scale="large"
             text="확인"
-            onClass="checkBtn"
-            onFunction={navigateLogIn}
+            onClick={navigateLogIn}
           />
         </div>
       </section>
