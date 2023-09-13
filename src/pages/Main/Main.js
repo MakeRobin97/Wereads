@@ -5,7 +5,9 @@ import './Main.scss';
 const Main = () => {
   return (
     <div className="main">
-      <PostList />
+      <section>
+        <PostList />
+      </section>
     </div>
   );
 };

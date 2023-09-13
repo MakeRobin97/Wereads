@@ -1,0 +1,14 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin.scss', '../../styles/partials/theme.scss';
+
+.toggle-btn {
+  @include Ir();
+  min-width: initial;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: url(../../../public/images/heart.svg) no-repeat center/cover;
+  &[toggle='true'] {
+    background-image: url(../../../public/images/heart_filled.svg);
+  }
+}
