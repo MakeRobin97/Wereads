@@ -6,12 +6,18 @@ const Input = props => {
   let explain;
   let alert = false;
   let statusColor;
-  if (status === 'emptyId' && name === 'email') {
+  if (status === 'emptyEmail' && name === 'email') {
     statusColor = 'red';
-  } else if (status === 'alreadyId' && name === 'email') {
+    alert = true;
+    explain = '가입된 적 없는 이메일이에요!';
+  } else if (status === 'alreadyEmail' && name === 'email') {
     statusColor = 'red';
+    alert = true;
+    explain = '이미 가입 된 이메일이에요!';
   } else if (status === 'passwordError' && name === 'password') {
     statusColor = 'red';
+    alert = true;
+    explain = '비밀번호가 틀렸어요!';
   }
 
   // if (status === 'idError') {
@@ -38,7 +44,7 @@ const Input = props => {
       />
       {alert ? (
         <div className="alertBox">
-          <img src={`/images/${status}.svg`} />
+          <img src={`/images/error.svg`} alt="mark" />
           {explain}
         </div>
       ) : null}
