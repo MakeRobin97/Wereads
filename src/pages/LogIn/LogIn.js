@@ -5,7 +5,7 @@ import Input from '../../components/Input/Input';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import { useNavigate } from 'react-router-dom';
 const LogIn = () => {
-  const [logInResult, setLoginResult] = useState({ errorCode: 'normal' });
+  const [logInResult, setLoginResult] = useState({ errorCode: 'logInSuccess' });
   const navigate = useNavigate();
   const navigateSignUp = () => {
     navigate('/signup ');
@@ -54,6 +54,10 @@ const LogIn = () => {
         setLoginResult(result);
       });
   };
+
+  if (logInResult.errorCode === 'logInSuccess') {
+    navigate('/');
+  }
 
   return (
     <div className="logIn">
