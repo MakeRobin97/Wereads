@@ -54,7 +54,8 @@ const SignUp = () => {
       ? false
       : true;
 
-  const postSignUp = () => {
+  const postSignUp = e => {
+    e.preventdefault();
     fetch('http://10.58.52.108:8000/users/signup', {
       method: 'POST',
       headers: {
@@ -72,10 +73,10 @@ const SignUp = () => {
       });
   };
 
-
   if (signUpResult.code === 'signUpSuccess') {
     navigate('/signupclear');
   }
+  console.log(signUpResult);
   return (
     <div className="signUp">
       <section className="container">
@@ -121,13 +122,12 @@ const SignUp = () => {
             />
 
             <Button
-              type="button"
+              type="submit"
               shape="solid"
               scale="large"
               text="회원 가입"
               disabled={signUpBtnCheck}
-              onFunction={postSignUp}
-              onClass="signUpBtn"
+              onClick={postSignUp}
             />
           </fieldset>
         </form>
