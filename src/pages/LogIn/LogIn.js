@@ -99,7 +99,7 @@ const LogIn = () => {
               scale="large"
               text="로그인"
               disabled={logInBtnCheck}
-              onFunction={navigateLogIn}
+              onClcik={navigateLogIn}
             />
           </fieldset>
         </form>
@@ -109,7 +109,7 @@ const LogIn = () => {
             <button onClick={navigateSignUp}>회원 가입</button>
           </div>
           <div className="findPassword">
-            <button href="1">비밀번호 찾기</button>
+            <button>비밀번호 찾기</button>
           </div>
         </div>
       </section>
