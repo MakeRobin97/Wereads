@@ -4,7 +4,7 @@ import './LogIn.scss';
 import Input from '../../components/Input/Input';
 import { useNavigate } from 'react-router-dom';
 const LogIn = () => {
-  const [logInResult, setLoginResult] = useState({
+  const [logInResult, setLogInResult] = useState({
     code: 'normal',
   });
   const navigate = useNavigate();
@@ -39,8 +39,9 @@ const LogIn = () => {
     emailCheck(inputs.email) && passwordCheck(inputs.password) ? false : true;
 
   // 로그인 요청
-  const navigateLogIn = () => {
-    fetch('http://localhost:8000/users', {
+  const navigateLogIn = e => {
+    e.preventDefault();
+    fetch('http://10.58.52.108:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -52,14 +53,15 @@ const LogIn = () => {
     })
       .then(res => res.json())
       .then(result => {
-        setLoginResult(result);
+        setLogInResult(result);
       });
   };
 
   if (logInResult.code === 'logInSuccess') {
     navigate('/');
   }
-
+  console.log(logInResult);
+  console.log(logInResult.code);
   return (
     <div className="logIn">
       <section className="splash">
@@ -94,10 +96,11 @@ const LogIn = () => {
               code={logInResult.code}
             />
             <Button
-              type="button"
+              type="submit"
               shape="solid"
               scale="large"
               text="로그인"
+              N
               disabled={logInBtnCheck}
               onClick={navigateLogIn}
             />

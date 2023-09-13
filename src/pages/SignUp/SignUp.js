@@ -53,7 +53,7 @@ const SignUp = () => {
       : true;
 
   const postSignUp = () => {
-    fetch('http://localhost:8000/users', {
+    fetch('http://10.58.52.108:8000/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -73,7 +73,7 @@ const SignUp = () => {
   if (signUpResult.code === 'signUpSuccess') {
     navigate('/signupclear');
   }
-
+  console.log(signUpResult);
   return (
     <div className="signUp">
       <Header />
@@ -97,6 +97,7 @@ const SignUp = () => {
               type="password"
               onInputChange={onInputChange}
               disabled={false}
+              code={signUpResult.code}
             />
             <Input
               placeholder="비밀번호 확인"

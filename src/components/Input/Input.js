@@ -18,6 +18,10 @@ const Input = props => {
     statusColor = 'red';
     alert = true;
     explain = '비밀번호가 틀렸어요!';
+  } else if (code === 'passwordNeedSpecial' && name === 'password') {
+    statusColor = 'red';
+    alert = true;
+    explain = '비밀번호에는 특수기호가 필요해요!';
   }
 
   return (

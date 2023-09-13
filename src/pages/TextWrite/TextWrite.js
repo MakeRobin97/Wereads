@@ -54,6 +54,10 @@ const TextWrite = () => {
   if (postingResult.code === 'CONTENT_TOO_SHORT') {
     writingInfo = '한 글자 이상 입력해주세요';
   }
+
+  if (postingResult.code === 'writingSuccess') {
+    navigate('/');
+  }
   return (
     <div className="textWrite">
       <section className="container">
