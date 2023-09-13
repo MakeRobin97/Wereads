@@ -1,0 +1,46 @@
+@charset "utf-8";
+@import '../../styles/partials/mixin', '../../styles/partials/theme';
+
+@mixin theme(
+  $theme,
+  $grayscale-1,
+  $grayscale-2,
+  $grayscale-3,
+  $grayscale-4,
+  $grayscale-5,
+  $grayscale-6
+) {
+  [theme='#{$theme}'] {
+    .back-btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 400;
+      color: $grayscale-1;
+      &::before {
+        content: '';
+        width: 40px;
+        height: 40px;
+        margin-right: 4px;
+        background: url(../../../public/images/Back_arrow.svg) no-repeat
+          center/cover;
+      }
+    }
+  }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4,
+  $grayscale-5, $grayscale-6 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4,
+    $grayscale-5,
+    $grayscale-6
+  );
+}

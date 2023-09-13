@@ -21,7 +21,7 @@ const Router = () => {
       <div className="inner-wrap">
         <div
           style={{
-            position: 'absolute',
+            position: 'fixed',
             top: '0',
             right: '0',
           }}
