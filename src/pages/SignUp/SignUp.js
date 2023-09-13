@@ -8,7 +8,7 @@ import './SignUp.scss';
 
 const SignUp = () => {
   const [signUpResult, setSignUpResult] = useState({
-    errorCode: 'normal',
+    code: 'normal',
   });
   const [pwAgain, setPwAgain] = useState('');
 
@@ -70,7 +70,7 @@ const SignUp = () => {
       });
   };
 
-  if (signUpResult.errorCode === '200') {
+  if (signUpResult.code === 'signUpSuccess') {
     navigate('/signupclear');
   }
 
@@ -89,7 +89,7 @@ const SignUp = () => {
               name="email"
               type="text"
               onInputChange={onInputChange}
-              status={signUpResult.errorCode}
+              code={signUpResult.code}
             />
             <Input
               placeholder="비밀번호"

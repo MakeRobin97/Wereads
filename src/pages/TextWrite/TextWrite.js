@@ -5,11 +5,14 @@ import TextArea from '../../components/TextArea/TextArea';
 import './TextWrite.scss';
 
 const TextWrite = () => {
+  let writingInfo = '스레드를 시작하세요.';
+
   const navigate = useNavigate();
   const navigateBack = () => {
     navigate(-1);
   };
 
+  // 프로필 사진, 닉네임 가져오기
   const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
@@ -22,28 +25,52 @@ const TextWrite = () => {
       });
   }, []);
 
-  const [inputs, setInputs] = useState({
-    text: '',
-  });
-  const onInputChange = event => {
-    const { name, value } = event.target;
-    setInputs(prev => ({ ...prev, [name]: value }));
+  // 컨텐츠 내용 담기
+  const [inputs, setInputs] = useState('');
+  const onInputChange = e => {
+    setInputs(e.target.value);
   };
 
-  const publicUrl = process.env.PUBLIC_URL;
+  // 포스팅 관련
+  const [postingResult, setPostingResult] = useState('');
 
+  const posting = () => {
+    fetch('http://localhost:8000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: '토큰',
+      },
+      body: JSON.stringify({
+        content: inputs,
+      }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        setPostingResult(result);
+      });
+  };
+
+  if (postingResult.code === 'CONTENT_TOO_SHORT') {
+    writingInfo = '한 글자 이상 입력해주세요';
+  }
   return (
     <div className="textWrite">
       <section className="container">
         <div className="myWriteSection">
-          <img className="pic" src={dataList.profileImage} alt="프로필사진" />
+          <img
+            className="pic"
+            //src={dataList.profileImage}
+            src="https://data.onnada.com/character/202010/thumb_2041552504_6ec9f3a9_9585EBA78829.png"
+            alt="프로필사진"
+          />
 
           <div className="nameAndWriteSection">
-            <span className="nickname">{dataList.nickname}</span>
-            <TextArea
-              onChange={onInputChange}
-              placeholder="스레드를 시작하세요."
-            />
+            <div className="nickname">
+              {/* {dataList.nickname} */}
+              곰돌이
+            </div>
+            <TextArea onChange={onInputChange} placeholder={writingInfo} />
           </div>
         </div>
         <section className="btnBox">
@@ -51,14 +78,9 @@ const TextWrite = () => {
             text="취소"
             shape="outline"
             scale="small"
-            onFunction={navigateBack}
+            onClick={navigateBack}
           />
-          <Button
-            text="확인"
-            shape="solid"
-            scale="small"
-            onFunction={navigateBack}
-          />
+          <Button text="확인" shape="solid" scale="small" onClick={posting} />
         </section>
       </section>
     </div>

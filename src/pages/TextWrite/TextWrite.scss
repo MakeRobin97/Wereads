@@ -26,18 +26,25 @@
         .myWriteSection {
           display: flex;
           align-items: flex-start;
-          // background-color: red;
         }
 
         .nameAndWriteSection {
           width: 100%;
           // background-color: green;
         }
+
         .pic {
           width: 50px;
           height: 50px;
           background-color: pink;
           display: inline-block;
+          border-radius: 50px;
+          margin-right: 10px;
+        }
+
+        .nickname {
+          margin: 5px 0 10px 0;
+          font-weight: 700;
         }
 
         .btnBox {
@@ -46,7 +53,7 @@
           align-items: center;
           padding: 15px 0 20px 0;
           border-top: 2px solid $grayscale-4;
-          // margin: 50px 0 0 0;
+          margin: 40px 0 0 0;
         }
       }
     }
