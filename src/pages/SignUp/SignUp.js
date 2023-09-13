@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import InfoBox from '../../components/InfoBox/InfoBox';
+import Header from '../../components/Header/Header';
 import './SignUp.scss';
 
 const SignUp = () => {
   const [signUpResult, setSignUpResult] = useState({
-    errorCode: 'normal',
+    code: 'normal',
   });
   const [pwAgain, setPwAgain] = useState('');
 
   const navigate = useNavigate();
-  const navigateBack = () => {
-    navigate(-1);
-  };
 
   const emailRegEx =
     /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
@@ -72,22 +70,20 @@ const SignUp = () => {
       });
   };
 
+  useEffect(() => {
+    if (signUpResult.code === 'signUpSuccess') {
+      navigate('/signupclear');
+    }
+  });
 
-  if (signUpResult.code === 'signUpSuccess') {
-    navigate('/signupclear');
-  }
   return (
     <div className="signUp">
+      <Header />
       <section className="container">
         <form className="form">
           <fieldset>
             <legend className="hidden">회원가입 양식</legend>
-            <Button
-              shape="mix"
-              text="뒤로"
-              onFunction={navigateBack}
-              onClass="backBtn"
-            />
+
             <h1>회원가입</h1>
             <InfoBox title="이메일" required={true} />
             <Input
@@ -95,7 +91,7 @@ const SignUp = () => {
               name="email"
               type="text"
               onInputChange={onInputChange}
-              status={signUpResult.errorCode}
+              code={signUpResult.code}
             />
             <Input
               placeholder="비밀번호"
@@ -126,8 +122,7 @@ const SignUp = () => {
               scale="large"
               text="회원 가입"
               disabled={signUpBtnCheck}
-              onFunction={postSignUp}
-              onClass="signUpBtn"
+              onClick={postSignUp}
             />
           </fieldset>
         </form>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import './LogIn.scss';
 import Input from '../../components/Input/Input';
@@ -39,8 +39,7 @@ const LogIn = () => {
     emailCheck(inputs.email) && passwordCheck(inputs.password) ? false : true;
 
   // 로그인 요청
-  const navigateLogIn = e => {
-    e.preventDefault();
+  const navigateLogIn = () => {
     fetch('http://10.58.52.108:8000/users/login', {
       method: 'POST',
       headers: {
@@ -57,11 +56,16 @@ const LogIn = () => {
       });
   };
 
-  if (logInResult.code === 'logInSuccess') {
-    navigate('/');
-  }
   console.log(logInResult);
   console.log(logInResult.code);
+
+  useEffect(() => {
+    if (logInResult.code === 'logInSuccess') {
+      window.localStorage.setItem('accessToken', logInResult.accessToken);
+      navigate('/');
+    }
+  });
+
   return (
     <div className="logIn">
       <section className="splash">
@@ -96,7 +100,7 @@ const LogIn = () => {
               code={logInResult.code}
             />
             <Button
-              type="submit"
+              type="button"
               shape="solid"
               scale="large"
               text="로그인"

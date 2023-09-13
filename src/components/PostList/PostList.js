@@ -29,7 +29,6 @@ const Post = () => {
         setDate(primaryData);
       });
   }, []);
-
   return (
     <ul className="post-list">
       {dataList.map(item => {
