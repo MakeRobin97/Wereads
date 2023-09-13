@@ -35,11 +35,12 @@ const TextWrite = () => {
   const [postingResult, setPostingResult] = useState('');
 
   const posting = () => {
-    fetch('http://localhost:8000/users', {
+    fetch('http://10.58.52.108:8000/posts/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization: '토큰',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImlhdCI6MTY5NDU5NTg0NX0.yLqZpDM0JuMB8vNlNHUmxRwhnTCGx-pNLjeWPPAwc-Q',
       },
       body: JSON.stringify({
         content: inputs,

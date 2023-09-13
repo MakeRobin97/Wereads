@@ -5,6 +5,7 @@ import './PostList.scss';
 const Post = () => {
   const [dataList, setDataList] = useState([]);
   const [date, setDate] = useState([]);
+  const [test, setTest] = useState([]);
   const publicUrl = process.env.PUBLIC_URL;
   const defaultProfileImg = `${publicUrl}/images/user.png`;
 
@@ -14,6 +15,7 @@ const Post = () => {
     })
       .then(res => res.json())
       .then(data => {
+        setTest(data);
         const result = data.getThread;
         let primaryData;
         // let arr = [];
@@ -30,6 +32,9 @@ const Post = () => {
       });
   }, []);
 
+  console.log(dataList);
+  console.log(date);
+  console.log(test);
   return (
     <ul className="post-list">
       {dataList.map(item => {
