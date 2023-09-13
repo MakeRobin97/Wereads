@@ -25,6 +25,29 @@ button {
   cursor: pointer;
 }
 
+#theme-switcher {
+  @include Position(fixed, $top: 0, $right: 0);
+  z-index: 10;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+}
+
+[theme='darkTheme'] {
+  #theme-switcher {
+    background-image: url(../../../public/images/ic_light_theme.png);
+  }
+}
+
+[theme='lightTheme'] {
+  #theme-switcher {
+    background-image: url(../../../public/images/ic_dark_theme.png);
+  }
+}
+
 // 웹 접근성 처리
 .a11y-hidden {
   overflow: hidden;

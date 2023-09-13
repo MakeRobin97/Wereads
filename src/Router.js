@@ -19,23 +19,7 @@ const Router = () => {
   return (
     <div id="outer-wrap" theme="lightTheme">
       <div className="inner-wrap">
-        <div
-          style={{
-            position: 'fixed',
-            top: '0',
-            right: '0',
-          }}
-        >
-          <input
-            id="theme-switcher"
-            type="checkbox"
-            onClick={themeSwitcher}
-            style={{
-              width: '34px',
-              height: '34px',
-            }}
-          />
-        </div>
+        <input id="theme-switcher" type="checkbox" onClick={themeSwitcher} />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />

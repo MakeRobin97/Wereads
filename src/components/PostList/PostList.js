@@ -4,6 +4,8 @@ import './PostList.scss';
 
 const Post = () => {
   const [dataList, setDataList] = useState([]);
+  const publicUrl = process.env.PUBLIC_URL;
+  const defaultProfileImg = `${publicUrl}/images/user.png`;
 
   useEffect(() => {
     fetch('/data/postData.json', {
@@ -23,7 +25,14 @@ const Post = () => {
             <div>
               <div className="profile-area">
                 <div className="left-split">
-                  <img src={item.profileImage} alt="류창선님 프로필 사진" />
+                  <img
+                    src={
+                      item.profileImage === ''
+                        ? defaultProfileImg
+                        : item.profileImage
+                    }
+                    alt="류창선님 프로필 사진"
+                  />
                   <span className="nickname">{item.nickname}</span>
                 </div>
                 <div className="right-split">
