@@ -19,6 +19,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 // 웹 접근성 처리
 .a11y-hidden {
   overflow: hidden;

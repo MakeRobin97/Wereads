@@ -1,29 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Button.scss';
 
 function Button(props) {
-  const { type = 'button', shape, icon, scale, text, action, disabled } = props;
-  const [toggle, setToggle] = useState('false');
-  const [toggleText, setToggleText] = useState('안 좋아요');
-  const clickedToggle = e => {
-    const targetAttr = e.target.attributes.icon;
-    const isIconShape = targetAttr ? true : false;
-
-    if (isIconShape) {
-      setToggle(prev => !prev);
-      if (!toggle) {
-        setToggleText('안 좋아요');
-      } else {
-        setToggleText('좋아요');
-      }
-    }
-  };
+  const {
+    type = 'button',
+    shape = 'solid',
+    scale,
+    text,
+    action,
+    disabled,
+    onClick,
+  } = props;
 
   // props
-  // - type: [String]
-  // - shape: [String] solid / outline / icon / mix / text
-  // - icon: [String] like
-  // - scale: [String] small / large
+  // - type: [String] button(default) / submit / reset
+  // - shape: [String] solid(default) / outline / text
+  // - scale: [String] large(default) / small
   // - text: [String]
   // - action: [String] delete
   // - disabled: 조건이 상이하므로 페이지마다 다른 삼항 조건문 적용
@@ -33,15 +25,13 @@ function Button(props) {
       className="btn"
       type={type}
       shape={shape}
-      icon={icon}
       scale={scale}
-      aria-label={!icon ? text : toggleText}
+      aria-label={text}
       action={action}
-      toggle={!toggle ? 'true' : 'false'}
-      onClick={clickedToggle}
+      onClick={onClick}
       disabled={disabled}
     >
-      {!icon ? text : toggleText}
+      {text}
     </button>
   );
 }
