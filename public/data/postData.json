@@ -37,7 +37,7 @@
   {
     "postId": 6,
     "nickname": "운영자",
-    "profileImage": "",
+    "profileImage": null,
     "content": "test",
     "createdAt": "0000-00-00"
   },

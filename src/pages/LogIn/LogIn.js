@@ -3,6 +3,8 @@ import Button from '../../components/Button/Button';
 import './LogIn.scss';
 import Input from '../../components/Input/Input';
 import { useNavigate } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../svg/Logo.svg';
+import { ReactComponent as LogoWecode } from '../../svg/logo_wecode.svg';
 const LogIn = () => {
   const [logInResult, setLogInResult] = useState({
     code: 'normal',
@@ -33,8 +35,6 @@ const LogIn = () => {
     setInputs(prev => ({ ...prev, [name]: value }));
   };
 
-  const publicUrl = process.env.PUBLIC_URL;
-
   const logInBtnCheck =
     emailCheck(inputs.email) && passwordCheck(inputs.password) ? false : true;
 
@@ -56,9 +56,6 @@ const LogIn = () => {
       });
   };
 
-  console.log(logInResult);
-  console.log(logInResult.code);
-
   useEffect(() => {
     if (logInResult.code === 'logInSuccess') {
       window.localStorage.setItem('accessToken', logInResult.accessToken);
@@ -71,13 +68,10 @@ const LogIn = () => {
       <section className="splash">
         <hgroup>
           <h1>
-            <img src={`${publicUrl}/images/Logo.svg`} alt="wecodeLogo" />
+            <Logo />
           </h1>
           <h2>
-            <img
-              src={`${publicUrl}/images/logo_wecode.svg`}
-              alt="wecodeWordLogo"
-            />
+            <LogoWecode />
           </h2>
         </hgroup>
       </section>

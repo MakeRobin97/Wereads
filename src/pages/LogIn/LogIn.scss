@@ -24,6 +24,17 @@
         height: inherit;
         h1 {
           text-align: center;
+          & + h2 {
+            margin-top: 24px;
+          }
+        }
+        h2 {
+          svg {
+            path {
+              fill: $grayscale-1;
+              stroke: $grayscale-1;
+            }
+          }
         }
       }
 
@@ -41,7 +52,10 @@
       .more {
         display: flex;
         justify-content: center;
-        margin: 10px 0 0 10px;
+        margin-top: 10px;
+        button {
+          color: $grayscale-1;
+        }
       }
       .goToSignUp {
         width: 140px;
@@ -49,19 +63,11 @@
         @include FlexCenter;
         border-right: 2px solid $grayscale-4;
         cursor: pointer;
-
-        button {
-          all: unset;
-        }
       }
       .findPassword {
         width: 140px;
         height: 25px;
         @include FlexCenter;
-
-        button {
-          all: unset;
-        }
       }
     }
   }
