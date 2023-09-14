@@ -5,6 +5,8 @@ import Input from '../../components/Input/Input';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../svg/Logo.svg';
 import { ReactComponent as LogoWecode } from '../../svg/logo_wecode.svg';
+import Header from '../../components/Header/Header';
+
 const LogIn = () => {
   const [logInResult, setLogInResult] = useState({
     code: 'normal',
@@ -39,8 +41,9 @@ const LogIn = () => {
     emailCheck(inputs.email) && passwordCheck(inputs.password) ? false : true;
 
   // 로그인 요청
-  const navigateLogIn = () => {
-    fetch('http://10.58.52.108:8000/users/login', {
+  const navigateLogIn = event => {
+    event.preventDefault();
+    fetch('http://10.58.52.52:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -63,8 +66,10 @@ const LogIn = () => {
     }
   });
 
+  console.log(inputs);
   return (
     <div className="logIn">
+      <Header />
       <section className="splash">
         <hgroup>
           <h1>
@@ -76,31 +81,33 @@ const LogIn = () => {
         </hgroup>
       </section>
       <section className="container">
-        <form className="form">
+        <form
+          className="form"
+          onChange={onInputChange}
+          onSubmit={navigateLogIn}
+        >
           <fieldset>
             <legend className="hidden">로그인 양식</legend>
             <Input
               placeholder="이메일"
               name="email"
               type="text"
-              onInputChange={onInputChange}
+              // onInputChange={onInputChange}
               code={logInResult.code}
             />
             <Input
               placeholder="비밀번호"
               name="password"
               type="password"
-              onInputChange={onInputChange}
+              // onInputChange={onInputChange}
               code={logInResult.code}
             />
             <Button
-              type="button"
+              type="submit"
               shape="solid"
               scale="large"
               text="로그인"
-              N
               disabled={logInBtnCheck}
-              onClick={navigateLogIn}
             />
           </fieldset>
         </form>

@@ -10,7 +10,7 @@ const Post = () => {
   const defaultProfileImg = `${publicUrl}/images/user.png`;
 
   useEffect(() => {
-    fetch('/data/postData.json', {
+    fetch('http://10.58.52.52:8000/posts/read', {
       method: 'GET',
       header: {
         'Content-Type': 'application/json',
@@ -19,13 +19,12 @@ const Post = () => {
     })
       .then(res => res.json())
       .then(data => {
-        // const result = data.getThread;
-        // setDataList(result);
-
+        const result = data.getThread;
+        setDataList(result);
         // response에서 Authorization에 대한 key, value(true)가 내려와야 함(예: accessToken: true)
 
         // mock data
-        setDataList(data);
+        // setDataList(data);
       });
   }, []);
 

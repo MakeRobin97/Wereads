@@ -52,8 +52,9 @@ const SignUp = () => {
       ? false
       : true;
 
-  const postSignUp = () => {
-    fetch('http://10.58.52.108:8000/users/signup', {
+  const postSignUp = event => {
+    event.preventDefault();
+    fetch('http://10.58.52.52:8000/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -80,7 +81,7 @@ const SignUp = () => {
     <div className="signUp">
       <Header />
       <section className="container">
-        <form className="form">
+        <form className="form" onChange={onInputChange} onSubmit={postSignUp}>
           <fieldset>
             <legend className="hidden">회원가입 양식</legend>
 
@@ -90,14 +91,14 @@ const SignUp = () => {
               placeholder="이메일"
               name="email"
               type="text"
-              onInputChange={onInputChange}
+              // onInputChange={onInputChange}
               code={signUpResult.code}
             />
             <Input
               placeholder="비밀번호"
               name="password"
               type="password"
-              onInputChange={onInputChange}
+              // onInputChange={onInputChange}
               disabled={false}
               code={signUpResult.code}
             />
@@ -113,17 +114,16 @@ const SignUp = () => {
               placeholder="닉네임"
               name="nickname"
               type="text"
-              onInputChange={onInputChange}
+              // onInputChange={onInputChange}
             />
           </fieldset>
           <div className="btn-wrap">
             <Button
-              type="button"
+              type="submit"
               shape="solid"
               scale="large"
               text="회원 가입"
               disabled={signUpBtnCheck}
-              onClick={postSignUp}
             />
           </div>
         </form>
