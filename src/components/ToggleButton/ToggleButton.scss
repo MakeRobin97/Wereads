@@ -1,14 +1,49 @@
 @charset "utf-8";
 @import '../../styles/partials/mixin.scss', '../../styles/partials/theme.scss';
 
-.toggle-btn {
-  @include Ir();
-  min-width: initial;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  background: url(../../../public/images/heart.svg) no-repeat center/cover;
-  &[toggle='true'] {
-    background-image: url(../../../public/images/heart_filled.svg);
+@mixin theme(
+  $theme,
+  $grayscale-1,
+  $grayscale-2,
+  $grayscale-3,
+  $grayscale-4,
+  $grayscale-5,
+  $grayscale-6
+) {
+  [theme='#{$theme}'] {
+    .toggle-btn {
+      @include Ir();
+      min-width: initial;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      svg {
+        path {
+          stroke: $grayscale-1;
+        }
+      }
+      &[toggle='true'] {
+        svg {
+          fill: $red;
+          path {
+            stroke: $red;
+          }
+        }
+      }
+    }
   }
+}
+
+@each $theme, $grayscale-1, $grayscale-2, $grayscale-3, $grayscale-4,
+  $grayscale-5, $grayscale-6 in $pallette
+{
+  @include theme(
+    $theme,
+    $grayscale-1,
+    $grayscale-2,
+    $grayscale-3,
+    $grayscale-4,
+    $grayscale-5,
+    $grayscale-6
+  );
 }

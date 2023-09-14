@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
+import ToggleButton from '../ToggleButton/ToggleButton';
 import './PostList.scss';
 
 const Post = () => {
@@ -10,16 +12,25 @@ const Post = () => {
   useEffect(() => {
     fetch('/data/postData.json', {
       method: 'GET',
+      header: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('accessToken'),
+      },
     })
       .then(res => res.json())
       .then(data => {
         // const result = data.getThread;
         // setDataList(result);
 
+        // response에서 Authorization에 대한 key, value(true)가 내려와야 함(예: accessToken: true)
+
         // mock data
         setDataList(data);
       });
   }, []);
+
+  const isAccessToken = true;
+
   return (
     <ul className="post-list">
       {dataList.map(item => {
@@ -41,6 +52,12 @@ const Post = () => {
                 </div>
                 <div className="right-split">
                   <span className="date">{item.createdAt}</span>
+                  {isAccessToken ? (
+                    <>
+                      <Button shape="text" text="삭제" action="delete" />
+                      <Button shape="text" text="수정" />
+                    </>
+                  ) : null}
                 </div>
               </div>
               <Link to="/postDetail">
@@ -49,6 +66,7 @@ const Post = () => {
               <div className="count-area">
                 <span>댓글 0</span>
               </div>
+              {isAccessToken ? <ToggleButton /> : null}
             </div>
           </li>
         );
