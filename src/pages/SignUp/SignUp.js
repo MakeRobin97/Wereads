@@ -115,7 +115,8 @@ const SignUp = () => {
               type="text"
               onInputChange={onInputChange}
             />
-
+          </fieldset>
+          <div className="btn-wrap">
             <Button
               type="button"
               shape="solid"
@@ -124,7 +125,7 @@ const SignUp = () => {
               disabled={signUpBtnCheck}
               onClick={postSignUp}
             />
-          </fieldset>
+          </div>
         </form>
       </section>
     </div>
