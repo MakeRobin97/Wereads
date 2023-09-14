@@ -29,7 +29,6 @@ const Post = () => {
   }, []);
 
   const isAccessToken = true;
-  const isMyData = true;
 
   return (
     <ul className="post-list">
@@ -52,7 +51,7 @@ const Post = () => {
                 </div>
                 <div className="right-split">
                   <span className="date">{item.createdAt}</span>
-                  {isAccessToken ? (
+                  {item.isMyPost ? (
                     <>
                       <Button shape="text" text="삭제" action="delete" />
                       <Button shape="text" text="수정" />
