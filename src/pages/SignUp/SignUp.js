@@ -86,13 +86,18 @@ const SignUp = () => {
             <legend className="hidden">회원가입 양식</legend>
 
             <h1>회원가입</h1>
-            <InfoBox title="이메일" required={true} />
+            <InfoBox
+              title="기본정보"
+              required={true}
+              className="basicInfoBox"
+            />
             <Input
               placeholder="이메일"
               name="email"
               type="text"
               // onInputChange={onInputChange}
               code={signUpResult.code}
+              className="emailInput"
             />
             <Input
               placeholder="비밀번호"
@@ -101,6 +106,7 @@ const SignUp = () => {
               // onInputChange={onInputChange}
               disabled={false}
               code={signUpResult.code}
+              className="passwordInput"
             />
             <Input
               placeholder="비밀번호 확인"
@@ -108,13 +114,19 @@ const SignUp = () => {
               type="password"
               disabled={false}
               onInputChange={passwordAgain}
+              className="passwordAgainCheck"
             />
-            <InfoBox title="닉네임" required={false} />
+            <InfoBox
+              title="닉네임"
+              required={false}
+              className="nicknameInfoBox"
+            />
             <Input
               placeholder="닉네임"
               name="nickname"
               type="text"
               // onInputChange={onInputChange}
+              className="nickname"
             />
           </fieldset>
           <div className="btn-wrap">

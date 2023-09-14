@@ -20,17 +20,28 @@
       height: 100vh;
       .splash {
         @include FlexCenter;
+        flex-direction: column;
         width: inherit;
         height: inherit;
-        h1 {
+
+        .imgBox {
           text-align: center;
         }
 
-        h2 {
-          font-weight: 700;
-          font-size: 25px;
-          text-align: center;
-          margin: 10px 0 10px 0;
+        h1 {
+          font-size: 24px;
+          font-weight: 800;
+          margin-top: 40px;
+        }
+
+        .nowLogIn {
+          font-weight: 400;
+          font-size: 20px;
+          margin-top: 16px;
+        }
+
+        img {
+          width: 136px;
         }
 
         h3 {
@@ -38,12 +49,12 @@
           text-align: center;
         }
       }
-      .backBtn {
-        margin: 15px 0 15px 0;
+      .back-btn {
+        margin-top: 32px;
       }
 
       .checkBtn {
-        margin-bottom: 20px;
+        margin-bottom: 16px;
       }
 
       .container {

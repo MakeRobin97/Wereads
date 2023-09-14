@@ -2,7 +2,7 @@ import React from 'react';
 import './InfoBox.scss';
 
 const InfoBox = props => {
-  const { title, required } = props;
+  const { title, required, className } = props;
 
   let inputInfo;
   let infoColor;
@@ -15,7 +15,7 @@ const InfoBox = props => {
   }
 
   return (
-    <div className="infoBox">
+    <div className={`infoBox ${className}`}>
       <h2 className="infoFirst">{title}</h2>
       <span className={`infoSecond ${infoColor}`}>{inputInfo}</span>
     </div>

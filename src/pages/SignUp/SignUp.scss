@@ -17,23 +17,46 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      .form {
-        padding-bottom: 120px;
+
+      .back-btn {
+        margin-top: 32px;
       }
+
       fieldset {
         padding: 24px 24px 40px;
         h1 {
           margin-bottom: 20px;
           font-size: 24px;
-          font-weight: 700;
+          font-weight: 800;
           color: $grayscale-1;
+        }
+
+        .emailInput {
+          margin-top: 8px;
+        }
+
+        .passwordInput {
+          margin-top: 8px;
+        }
+
+        .passwordAgainCheck {
+          margin-top: 8px;
         }
       }
 
-      .container {
-        flex: 1;
+      form {
+        margin-top: 24px;
       }
 
+      .basicInfoBox {
+        margin-top: 24px;
+      }
+      .nicknameInfoBox {
+        margin-top: 24px;
+      }
+      .nickname {
+        margin-top: 8px;
+      }
       .btn-wrap {
         position: fixed;
         bottom: 40px;
