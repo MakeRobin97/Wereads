@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ReactComponent as HeartIcon } from '../../svg/heart.svg';
 import './ToggleButton.scss';
 
 function ToggleButton(props) {
@@ -28,6 +29,7 @@ function ToggleButton(props) {
       toggle={!toggle ? 'true' : 'false'}
       onClick={clickedToggle}
     >
+      <HeartIcon />
       {toggleText}
     </button>
   );
