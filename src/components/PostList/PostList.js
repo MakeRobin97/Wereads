@@ -30,6 +30,7 @@ const Post = () => {
   }, []);
 
   const isAccessToken = true;
+  const isMyData = true;
 
   return (
     <ul className="post-list">
@@ -64,6 +65,7 @@ const Post = () => {
                 <p className="post-content">{item.content}</p>
               </Link>
               <div className="count-area">
+                {isAccessToken ? <span>좋아요 0</span> : null}
                 <span>댓글 0</span>
               </div>
               {isAccessToken ? <ToggleButton /> : null}
