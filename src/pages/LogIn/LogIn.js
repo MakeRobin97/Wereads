@@ -69,7 +69,6 @@ const LogIn = () => {
   console.log(inputs);
   return (
     <div className="logIn">
-      <Header />
       <section className="splash">
         <hgroup>
           <h1>
@@ -94,6 +93,7 @@ const LogIn = () => {
               type="text"
               // onInputChange={onInputChange}
               code={logInResult.code}
+              className="emailInput"
             />
             <Input
               placeholder="비밀번호"
@@ -101,6 +101,7 @@ const LogIn = () => {
               type="password"
               // onInputChange={onInputChange}
               code={logInResult.code}
+              className="passwordInput"
             />
             <Button
               type="submit"
@@ -113,12 +114,11 @@ const LogIn = () => {
         </form>
 
         <div className="more">
-          <div className="goToSignUp">
-            <button onClick={navigateSignUp}>회원 가입</button>
-          </div>
-          <div className="findPassword">
-            <button>비밀번호 찾기</button>
-          </div>
+          <button onClick={navigateSignUp} className="goToSignUp">
+            회원 가입
+          </button>
+          <div className="line"></div>
+          <button className="findPassword">비밀번호 찾기</button>
         </div>
       </section>
     </div>

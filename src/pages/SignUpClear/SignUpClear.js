@@ -17,16 +17,11 @@ const SignUpClear = () => {
     <div className="signUpClear">
       <Header />
       <section className="splash">
-        <hgroup>
-          <h1>
-            <img
-              src={`${publicUrl}/images/banner_square.svg`}
-              alt="wecodeLogo"
-            />
-          </h1>
-          <h2>회원 가입되었습니다!</h2>
-          <h3>이제 로그인해주세요.</h3>
-        </hgroup>
+        <div className="imgBox">
+          <img src={`${publicUrl}/images/banner_square.svg`} alt="wecodeLogo" />
+        </div>
+        <h1>회원 가입되었습니다!</h1>
+        <div className="nowLogIn">이제 로그인해주세요.</div>
       </section>
       <section className="container">
         <div className="checkBtn">

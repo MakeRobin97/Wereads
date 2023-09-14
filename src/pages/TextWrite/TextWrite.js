@@ -65,8 +65,7 @@ const TextWrite = () => {
         <div className="myWriteSection">
           <img
             className="pic"
-            //src={dataList.profileImage}
-            src="https://data.onnada.com/character/202010/thumb_2041552504_6ec9f3a9_9585EBA78829.png"
+            src={process.env.PUBLIC_URL + '/images/user.png'}
             alt="프로필사진"
           />
 

@@ -40,8 +40,12 @@
 
       fieldset {
         button {
-          margin-top: 20px;
+          margin: 16px 0 0 0;
         }
+      }
+
+      .passwordInput {
+        margin-top: 8px;
       }
 
       .container {
@@ -51,22 +55,28 @@
 
       .more {
         display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        button {
-          color: $grayscale-1;
-        }
+        justify-content: space-between;
+        margin: 16px auto 0 auto;
+        width: 240px;
       }
       .goToSignUp {
-        width: 140px;
-        height: 25px;
+        width: 96px;
+        height: 17px;
         @include FlexCenter;
-        border-right: 2px solid $grayscale-4;
         cursor: pointer;
+        padding: 1.5px 0 1.5px;
       }
+
+      .line {
+        width: 1px;
+        height: 16px;
+        background-color: $grayscale-3;
+      }
+
       .findPassword {
-        width: 140px;
-        height: 25px;
+        width: 96px;
+        height: 17px;
+        padding: 1.5px 0 1.5px;
         @include FlexCenter;
       }
     }

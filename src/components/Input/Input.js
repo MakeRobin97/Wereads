@@ -2,10 +2,18 @@ import React from 'react';
 import './Input.scss';
 
 const Input = props => {
-  const { placeholder, name, type, onInputChange, disabled, code } = props;
+  const {
+    placeholder,
+    name,
+    type,
+    onInputChange,
+    disabled,
+    code,
+    className = '',
+  } = props;
   let explain;
   let alert = false;
-  let statusColor;
+  let statusColor = '';
   if (code === 'emptyEmail' && name === 'email') {
     statusColor = 'red';
     alert = true;
@@ -27,6 +35,7 @@ const Input = props => {
   return (
     <label className={`input ${statusColor}`}>
       <input
+        className={className}
         name={name}
         placeholder={placeholder}
         type={type}
