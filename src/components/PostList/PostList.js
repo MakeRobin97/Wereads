@@ -18,7 +18,6 @@ const Post = () => {
     if (change === 2) {
       window.location.replace('/');
     }
-    g;
   }, [change]);
 
   useEffect(() => {
