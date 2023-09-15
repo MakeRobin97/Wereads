@@ -39,9 +39,6 @@ const Post = () => {
       });
   }, []);
 
-  // const isAccessToken = true;
-  // const isMyData = true;
-
   const deleteFunction = id => {
     fetch(`http://10.58.52.52:8000/posts/${id}`, {
       method: 'DELETE',
