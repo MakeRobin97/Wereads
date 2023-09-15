@@ -54,7 +54,7 @@ const SignUp = () => {
 
   const postSignUp = event => {
     event.preventDefault();
-    fetch('http://10.58.52.52:8000/users/signup', {
+    fetch('http://10.58.52.96:8000/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

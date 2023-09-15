@@ -12,44 +12,48 @@ const Post = () => {
   const publicUrl = process.env.PUBLIC_URL;
   const defaultProfileImg = `${publicUrl}/images/user.png`;
 
-  let getPostId;
-
   useEffect(() => {
     if (change === 2) {
-      window.location.replace('/');
+      navigate('/');
     }
   }, [change]);
 
-  useEffect(() => {
-    fetch('http://10.58.52.52:8000/posts', {
+  const getLIst = async () => {
+    return await fetch('http://10.58.52.96:8000/posts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: localStorage.getItem('accessToken'),
+        authorization: window.sessionStorage.getItem('accessToken'),
       },
     })
       .then(res => res.json())
       .then(data => {
         const result = data.getThread;
         setDataList(result);
-        // response에서 Authorization에 대한 key, value(true)가 내려와야 함(예: accessToken: true)
+        // response에서 authorization에 대한 key, value(true)가 내려와야 함(예: accessToken: true)
 
         // mock data
         // setDataList(data);
       });
+  };
+  useEffect(() => {
+    getLIst();
   }, []);
 
   const deleteFunction = id => {
-    fetch(`http://10.58.52.52:8000/posts/${id}`, {
+    fetch(`http://10.58.52.96:8000/posts/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        authorization: localStorage.getItem('accessToken'),
+        authorization: window.sessionStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
         postId: id,
       }),
-    }).then(setChange(change + 1));
+    }).then(() => {
+      getLIst();
+      setChange(change + 1);
+    });
   };
 
   const editFunction = id => {
@@ -57,9 +61,7 @@ const Post = () => {
   };
 
   console.log(dataList);
-  console.log(change);
 
-  console.log(change);
   return (
     <ul className="post-list">
       {dataList.map(item => {
@@ -84,11 +86,13 @@ const Post = () => {
                   {item.isMyData ? (
                     <>
                       <Button
+                        type="submit"
                         shape="text"
                         text="삭제"
                         onClick={() => deleteFunction(item.postId)}
                       />
                       <Button
+                        type="submit"
                         shape="text"
                         text="수정"
                         onClick={() => editFunction(item.postId)}

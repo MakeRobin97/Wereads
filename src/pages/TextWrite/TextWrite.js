@@ -13,7 +13,7 @@ const TextWrite = () => {
   };
 
   // 프로필 사진, 닉네임 가져오기
-  const dataList = localStorage.getItem('nickname');
+  const dataList = sessionStorage.getItem('nickname');
 
   // 컨텐츠 내용 담기
   const [inputs, setInputs] = useState('');
@@ -25,8 +25,8 @@ const TextWrite = () => {
   const [postingResult, setPostingResult] = useState('');
 
   const posting = () => {
-    let tokenInfo = window.localStorage.getItem('accessToken');
-    fetch('http://10.58.52.52:8000/posts', {
+    let tokenInfo = window.sessionStorage.getItem('accessToken');
+    fetch('http://10.58.52.96:8000/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -50,8 +50,7 @@ const TextWrite = () => {
       navigate('/');
     }
   });
-  console.log(postingResult);
-  console.log(dataList);
+
   return (
     <div className="textWrite">
       <section className="splash">
