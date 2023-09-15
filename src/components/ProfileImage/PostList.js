@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './PostList.scss';
-
+import { useNavigate } from 'react-router-dom';
 const Post = () => {
   const [dataList, setDataList] = useState([]);
   const publicUrl = process.env.PUBLIC_URL;

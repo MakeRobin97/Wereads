@@ -13,7 +13,7 @@
   [theme='#{$theme}'] {
     @include ThemeTransition;
     background-color: $grayscale-6;
-    .textWrite {
+    .textEdit {
       display: flex;
       flex-direction: column;
       width: 100%;

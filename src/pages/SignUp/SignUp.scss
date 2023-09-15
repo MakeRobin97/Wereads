@@ -23,6 +23,9 @@
       }
 
       fieldset {
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: hidden;
         padding: 24px 24px 40px;
         h1 {
           margin-bottom: 20px;
@@ -56,6 +59,7 @@
       }
       .nickname {
         margin-top: 8px;
+        margin-bottom: 100px;
       }
       .btn-wrap {
         position: fixed;

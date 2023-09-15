@@ -22,7 +22,7 @@ function Button(props) {
 
   return (
     <button
-      className="btn"
+      className={'btn'}
       type={type}
       shape={shape}
       scale={scale}

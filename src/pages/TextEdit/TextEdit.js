@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import TextArea from '../../components/TextArea/TextArea';
-import './TextWrite.scss';
+import './TextEdit.scss';
 
-const TextWrite = () => {
+const TextEdit = () => {
   let writingInfo = '스레드를 시작하세요.';
 
   const navigate = useNavigate();
@@ -13,7 +13,17 @@ const TextWrite = () => {
   };
 
   // 프로필 사진, 닉네임 가져오기
-  const dataList = localStorage.getItem('nickname');
+  const [dataList, setDataList] = useState([]);
+  const { id } = useParams();
+  useEffect(() => {
+    fetch('/data/postData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setDataList(data);
+      });
+  }, []);
 
   // 컨텐츠 내용 담기
   const [inputs, setInputs] = useState('');
@@ -26,20 +36,17 @@ const TextWrite = () => {
 
   const posting = () => {
     let tokenInfo = window.localStorage.getItem('accessToken');
-    fetch('http://10.58.52.52:8000/posts', {
-      method: 'POST',
+    fetch('http://10.58.52.52:8000/posts/create', {
+      method: 'PUT',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        authorization: tokenInfo,
+        'Content-Type': 'application/json',
+        authorization: '토큰',
       },
       body: JSON.stringify({
-        content: inputs,
+        content: '수정한 게시글의 내용',
+        postId: id,
       }),
-    })
-      .then(res => res.json())
-      .then(result => {
-        setPostingResult(result);
-      });
+    });
   };
 
   if (postingResult.code === 'CONTENT_TOO_SHORT') {
@@ -51,9 +58,8 @@ const TextWrite = () => {
     }
   });
   console.log(postingResult);
-  console.log(dataList);
   return (
-    <div className="textWrite">
+    <div className="textEdit">
       <section className="splash">
         <section className="picSection">
           <div className="picBox">
@@ -65,8 +71,15 @@ const TextWrite = () => {
           </div>
         </section>
         <section className="nameAndWriting">
-          <div className="nickname">{dataList}</div>
-          <TextArea onChange={onInputChange} placeholder={writingInfo} />
+          <div className="nickname">
+            {dataList.nickname}
+            {/* 곰돌이 */}
+          </div>
+          <TextArea
+            onChange={onInputChange}
+            placeholder={writingInfo}
+            value={dataList.content}
+          />
         </section>
       </section>
       <section className="btnBox">
@@ -81,4 +94,4 @@ const TextWrite = () => {
     </div>
   );
 };
-export default TextWrite;
+export default TextEdit;
