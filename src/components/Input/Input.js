@@ -7,7 +7,6 @@ const Input = props => {
     name,
     type,
     onInputChange,
-    disabled,
     code,
     className = '',
   } = props;
@@ -40,10 +39,11 @@ const Input = props => {
         placeholder={placeholder}
         type={type}
         onChange={onInputChange}
+        spellCheck={false}
       />
       {alert ? (
         <div className="alertBox">
-          <img src={`/images/error.svg`} alt="mark" />
+          <img src="/images/error.svg" alt="mark" />
           {explain}
         </div>
       ) : null}
