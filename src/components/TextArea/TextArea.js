@@ -6,9 +6,13 @@ const TextArea = props => {
 
   return (
     <div className="textArea">
-      <textarea name={name} placeholder={placeholder} onChange={onChange}>
-        {value ? value : null}
-      </textarea>
+      <textarea
+        name={name}
+        placeholder={placeholder}
+        onChange={onChange}
+        value={value}
+        spellCheck={false}
+      />
     </div>
   );
 };

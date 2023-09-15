@@ -42,7 +42,7 @@ const LogIn = () => {
   // 로그인 요청
   const navigateLogIn = event => {
     event.preventDefault();
-    fetch('http://10.58.52.52:8000/users/login', {
+    fetch('http://10.58.52.96:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -60,8 +60,8 @@ const LogIn = () => {
 
   useEffect(() => {
     if (logInResult.code === 'logInSuccess') {
-      window.localStorage.setItem('accessToken', logInResult.accessToken);
-      window.localStorage.setItem('nickname', logInResult.nickname);
+      window.sessionStorage.setItem('accessToken', logInResult.accessToken);
+      window.sessionStorage.setItem('nickname', logInResult.nickname);
       navigate('/');
     }
   });

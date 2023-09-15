@@ -5,19 +5,56 @@ import TextArea from '../../components/TextArea/TextArea';
 import './TextEdit.scss';
 
 const TextEdit = () => {
-  let writingInfo = '스레드를 시작하세요.';
-
+  const [dataList, setDataList] = useState({});
+  const [writingInfo, setWritingInfo] = useState('스레드를 시작하세요.');
+  const { id } = useParams();
   const navigate = useNavigate();
+
   const navigateBack = () => {
     navigate(-1);
   };
 
-  // 프로필 사진, 닉네임 가져오기
-  const [dataList, setDataList] = useState([]);
-  const { id } = useParams();
+  const posting = () => {
+    if (dataList.content.length === 0) {
+      setWritingInfo('한 글자 이상 입력해주세요');
+
+      return;
+    }
+
+    fetch('http://10.58.52.96:8000/posts/update', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: window.sessionStorage.getItem('accessToken'),
+      },
+      body: JSON.stringify({
+        content: dataList.content,
+        postId: id,
+      }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.code === 'CONTENT_TOO_SHORT') {
+          setWritingInfo('한 글자 이상 입력해주세요');
+        }
+
+        if (result.code === 'writingSuccess') {
+          navigate('/');
+        }
+      });
+  };
+
+  const onInputChange = e => {
+    setDataList({ ...dataList, content: e.target.value });
+  };
+
   useEffect(() => {
-    fetch('/data/postData.json', {
+    fetch(`http://10.58.52.96:8000/posts/details/${id}`, {
       method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: window.sessionStorage.getItem('accessToken'),
+      },
     })
       .then(res => res.json())
       .then(data => {
@@ -25,39 +62,6 @@ const TextEdit = () => {
       });
   }, []);
 
-  // 컨텐츠 내용 담기
-  const [inputs, setInputs] = useState('');
-  const onInputChange = e => {
-    setInputs(e.target.value);
-  };
-
-  // 포스팅 관련
-  const [postingResult, setPostingResult] = useState('');
-
-  const posting = () => {
-    let tokenInfo = window.localStorage.getItem('accessToken');
-    fetch('http://10.58.52.52:8000/posts/create', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: '토큰',
-      },
-      body: JSON.stringify({
-        content: '수정한 게시글의 내용',
-        postId: id,
-      }),
-    });
-  };
-
-  if (postingResult.code === 'CONTENT_TOO_SHORT') {
-    writingInfo = '한 글자 이상 입력해주세요';
-  }
-  useEffect(() => {
-    if (postingResult.code === 'writingSuccess') {
-      navigate('/');
-    }
-  });
-  console.log(postingResult);
   return (
     <div className="textEdit">
       <section className="splash">
