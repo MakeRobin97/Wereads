@@ -5,7 +5,6 @@ import Input from '../../components/Input/Input';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../svg/Logo.svg';
 import { ReactComponent as LogoWecode } from '../../svg/logo_wecode.svg';
-import Header from '../../components/Header/Header';
 
 const LogIn = () => {
   const [logInResult, setLogInResult] = useState({
@@ -62,11 +61,12 @@ const LogIn = () => {
   useEffect(() => {
     if (logInResult.code === 'logInSuccess') {
       window.localStorage.setItem('accessToken', logInResult.accessToken);
+      window.localStorage.setItem('nickname', logInResult.nickname);
       navigate('/');
     }
   });
 
-  console.log(inputs);
+  console.log(logInResult);
   return (
     <div className="logIn">
       <section className="splash">
@@ -117,7 +117,7 @@ const LogIn = () => {
           <button onClick={navigateSignUp} className="goToSignUp">
             회원 가입
           </button>
-          <div className="line"></div>
+          <div className="line" />
           <button className="findPassword">비밀번호 찾기</button>
         </div>
       </section>

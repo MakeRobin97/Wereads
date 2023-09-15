@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import './PostList.scss';
 
 const Post = () => {
+  const [change, setChange] = useState(1);
+
+  const navigate = useNavigate();
   const [dataList, setDataList] = useState([]);
   const publicUrl = process.env.PUBLIC_URL;
   const defaultProfileImg = `${publicUrl}/images/user.png`;
 
+  let getPostId;
+
   useEffect(() => {
-    fetch('http://10.58.52.52:8000/posts/read', {
+    if (change === 2) {
+      window.location.replace('/');
+    }
+    g;
+  }, [change]);
+
+  useEffect(() => {
+    fetch('http://10.58.52.52:8000/posts', {
       method: 'GET',
-      header: {
+      headers: {
         'Content-Type': 'application/json',
         Authorization: localStorage.getItem('accessToken'),
       },
@@ -28,9 +40,30 @@ const Post = () => {
       });
   }, []);
 
-  const isAccessToken = true;
-  const isMyData = true;
+  // const isAccessToken = true;
+  // const isMyData = true;
 
+  const deleteFunction = id => {
+    fetch(`http://10.58.52.52:8000/posts/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('accessToken'),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    }).then(setChange(change + 1));
+  };
+
+  const editFunction = id => {
+    navigate(`/textedit/${id}`);
+  };
+
+  console.log(dataList);
+  console.log(change);
+
+  console.log(change);
   return (
     <ul className="post-list">
       {dataList.map(item => {
@@ -52,22 +85,34 @@ const Post = () => {
                 </div>
                 <div className="right-split">
                   <span className="date">{item.createdAt}</span>
-                  {isAccessToken ? (
+                  {item.isMyData ? (
                     <>
-                      <Button shape="text" text="삭제" action="delete" />
-                      <Button shape="text" text="수정" />
+                      <Button
+                        shape="text"
+                        text="삭제"
+                        onClick={() => deleteFunction(item.postId)}
+                      />
+                      <Button
+                        shape="text"
+                        text="수정"
+                        onClick={() => editFunction(item.postId)}
+                      />
                     </>
                   ) : null}
                 </div>
               </div>
-              <Link to="/postDetail">
-                <p className="post-content">{item.content}</p>
-              </Link>
+              {/* <Link to="/postDetail"> */}
+              <p className="post-content">{item.content}</p>
+              {/* </Link> */}
               <div className="count-area">
-                {isAccessToken ? <span>좋아요 0</span> : null}
-                <span>댓글 0</span>
+                {item.isAccessToken ? (
+                  <>
+                    <span>좋아요 0</span>
+                    <span>댓글 0</span>
+                  </>
+                ) : null}
               </div>
-              {isAccessToken ? <ToggleButton /> : null}
+              {item.isAccessToken ? <ToggleButton /> : null}
             </div>
           </li>
         );

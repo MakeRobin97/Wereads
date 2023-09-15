@@ -8,7 +8,11 @@ const Main = () => {
   const navigate = useNavigate();
 
   const goToTextWrite = () => {
-    navigate('/textwrite');
+    if (localStorage.getItem('accessToken')) {
+      navigate('/textwrite');
+    } else {
+      console.log('로그인필요!');
+    }
   };
 
   return (
