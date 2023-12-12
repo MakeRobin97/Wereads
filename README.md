@@ -1,3 +1,6 @@
+![image](https://github.com/MakeRobin97/Wereads/assets/127472621/3b3e6939-9ab3-4280-b4be-bb5e2ed00739)
+
+
 ## Wereads (쓰레드 클론코딩)
 
 - 쓰레드에 있는 회원가입, 로그인, 글쓰기, 삭제를 클론한 서비스
