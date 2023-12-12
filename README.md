@@ -1,4 +1,4 @@
-Wecode 49-1st weread project
+Threads clone coding project
 
 프론트엔드 :
 {
