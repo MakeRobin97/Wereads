@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import './PostList.scss';
@@ -59,8 +59,6 @@ const Post = () => {
   const editFunction = id => {
     navigate(`/textedit/${id}`);
   };
-
-  console.log(dataList);
 
   return (
     <ul className="post-list">

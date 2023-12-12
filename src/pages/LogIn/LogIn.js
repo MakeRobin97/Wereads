@@ -66,7 +66,6 @@ const LogIn = () => {
     }
   });
 
-  console.log(logInResult);
   return (
     <div className="logIn">
       <section className="splash">
