@@ -1,9 +1,12 @@
-![image](https://github.com/MakeRobin97/Wereads/assets/127472621/3b3e6939-9ab3-4280-b4be-bb5e2ed00739)
-
-
 ## Wereads (쓰레드 클론코딩)
 
 - 쓰레드에 있는 회원가입, 로그인, 글쓰기, 삭제를 클론한 서비스
+
+
+![image](https://github.com/MakeRobin97/Wereads/assets/127472621/3b3e6939-9ab3-4280-b4be-bb5e2ed00739)
+
+### 데모 영상
+- https://www.youtube.com/watch?v=gwhHSHOH4b4
 
 ## Wereads 프로젝트 Front-end 소개
 
@@ -20,8 +23,7 @@
 - 스레드는 메타에서 최근에 등장한 SNS 서비스로, 기본적인 SNS의 구조를 띄고 있어 클론하기로 함
 - 편리함을 주요 성질로 판단하고 이를 중심으로 기능 구현
 
-### 데모 영상
-- https://www.youtube.com/watch?v=gwhHSHOH4b4
+
 
 <br>
 
