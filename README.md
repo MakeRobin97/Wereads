@@ -1,4 +1,4 @@
-Threads clone coding project
+Threads 클론 코딩 프로젝트
 
 프론트엔드 :
 {
